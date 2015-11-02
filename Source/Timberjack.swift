@@ -113,7 +113,15 @@ public class Timberjack: NSURLProtocol {
         client?.URLProtocol(self, didFailWithError: error)
         logError(error)
     }
-    
+
+    func connection(connection: NSURLConnection, didReceiveAuthenticationChallenge challenge: NSURLAuthenticationChallenge) {
+        client?.URLProtocol(self, didReceiveAuthenticationChallenge: challenge)
+    }
+
+    func connection(connection: NSURLConnection, didCancelAuthenticationChallenge challenge: NSURLAuthenticationChallenge) {
+        client?.URLProtocol(self, didCancelAuthenticationChallenge: challenge)
+    }
+
     //MARK: - Logging
     
     public func logDivider() {
